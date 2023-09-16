@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://1y32x2gcefd5"]
+
+[ext_resource type="PackedScene" uid="uid://cmhxqib8aknql" path="res://Pixelerate/props.tscn" id="1_xnosb"]
+[ext_resource type="PackedScene" uid="uid://c4uh4uwl0ju0h" path="res://world_environment.tscn" id="2_pndio"]
+[ext_resource type="Shader" path="res://Pixelerate/pixelate.gdshader" id="3_libw6"]
+[ext_resource type="Script" path="res://Pixelerate/SpinCube.gd" id="4_4y16w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mdli8"]
+render_priority = 0
+shader = ExtResource("3_libw6")
+
+[sub_resource type="QuadMesh" id="QuadMesh_cxnaf"]
+material = SubResource("ShaderMaterial_mdli8")
+size = Vector2(3, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxkl5"]
+albedo_color = Color(0.905882, 0.811765, 0.560784, 1)
+emission_enabled = true
+emission = Color(0.572549, 0.482353, 0.235294, 1)
+
+[node name="SampleWorld" type="Node3D"]
+
+[node name="Props" parent="." instance=ExtResource("1_xnosb")]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("2_pndio")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.0239262, 0, 0.999714, 0, 1, 0, -0.999714, 0, 0.0239262, 2.28069, 1.296, -0.120216)
+
+[node name="PixelateFilter" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.859089)
+mesh = SubResource("QuadMesh_cxnaf")
+
+[node name="SpinCube" type="CSGBox3D" parent="."]
+transform = Transform3D(0.865628, -0.263813, 0.425547, 0.5, 0.5, -0.707107, -0.0262297, 0.824865, 0.564721, -0.767399, 1.30921, 0.0974998)
+size = Vector3(0.5, 0.5, 0.5)
+material = SubResource("StandardMaterial3D_dxkl5")
+script = ExtResource("4_4y16w")
+
+[node name="Node3D" type="Node3D" parent="SpinCube"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SpinCube/Node3D"]
+transform = Transform3D(0.707107, 0.5, 0.5, -5.96046e-08, 0.707107, -0.707107, -0.707107, 0.5, 0.5, -0.215421, -0.28176, 0.40155)
+light_color = Color(0.572549, 0.482353, 0.235294, 1)
+light_energy = 4.087
+shadow_enabled = true
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="SpinCube/Node3D"]
+transform = Transform3D(0.707107, 0.5, 0.5, -5.96046e-08, 0.707107, -0.707107, -0.707107, 0.5, 0.5, -0.316075, -0.46362, 0.201783)
+light_color = Color(0.572549, 0.482353, 0.235294, 1)
+light_energy = 4.087
+shadow_enabled = true
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="SpinCube/Node3D"]
+transform = Transform3D(0.707107, 0.5, 0.5, -5.96046e-08, 0.707107, -0.707107, -0.707107, 0.5, 0.5, -0.450481, -0.210122, 0.285993)
+light_color = Color(0.572549, 0.482353, 0.235294, 1)
+light_energy = 4.087
+shadow_enabled = true
+
+[node name="Node3D2" type="Node3D" parent="SpinCube"]
+transform = Transform3D(0.975739, 0.186482, 0.114708, -0.170308, 0.975739, -0.137581, -0.137581, 0.114708, 0.983826, 0.629478, 0.608846, -0.733131)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SpinCube/Node3D2"]
+transform = Transform3D(0.707107, 0.5, 0.5, -5.96046e-08, 0.707107, -0.707107, -0.707107, 0.5, 0.5, -0.215421, -0.28176, 0.40155)
+light_color = Color(0.572549, 0.482353, 0.235294, 1)
+light_energy = 4.087
+shadow_enabled = true
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="SpinCube/Node3D2"]
+transform = Transform3D(0.707107, 0.5, 0.5, -5.96046e-08, 0.707107, -0.707107, -0.707107, 0.5, 0.5, -0.316075, -0.46362, 0.201783)
+light_color = Color(0.572549, 0.482353, 0.235294, 1)
+light_energy = 4.087
+shadow_enabled = true
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="SpinCube/Node3D2"]
+transform = Transform3D(0.707107, 0.5, 0.5, -5.96046e-08, 0.707107, -0.707107, -0.707107, 0.5, 0.5, -0.450481, -0.210122, 0.285993)
+light_color = Color(0.572549, 0.482353, 0.235294, 1)
+light_energy = 4.087
+shadow_enabled = true
+
+[editable path="WorldEnvironment"]

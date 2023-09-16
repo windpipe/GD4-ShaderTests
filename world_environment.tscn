@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4uh4uwl0ju0h"]
+
+[ext_resource type="Texture2D" uid="uid://4wkqrhlsu4dd" path="res://assets/sky_linekotsi_14.png" id="1_q6ao7"]
+[ext_resource type="Script" path="res://WorldEnvironment.gd" id="2_gtvbe"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_f100f"]
+panorama = ExtResource("1_q6ao7")
+
+[sub_resource type="Sky" id="Sky_yukgj"]
+sky_material = SubResource("PanoramaSkyMaterial_f100f")
+
+[sub_resource type="Environment" id="Environment_0fhjp"]
+background_mode = 2
+sky = SubResource("Sky_yukgj")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 3
+ssil_enabled = true
+glow_enabled = true
+glow_bloom = 0.1
+glow_blend_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_0fhjp")
+script = ExtResource("2_gtvbe")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.396443, 0.918059, 0, -0.918059, 0.396443, 0, 4.1748, 5.95631)
+visible = false
+light_color = Color(0.541176, 0.541176, 0.541176, 1)
+light_energy = 0.2
+shadow_enabled = true
